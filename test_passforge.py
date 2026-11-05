@@ -78,3 +78,7 @@ def test_score_capped_at_100():
 
 def test_score_is_deterministic():
     assert score_password("hello123") == score_password("hello123")
+def test_no_ambiguous_generated_password_excludes_confusables():
+    for _ in range(50):
+        pwd = generate_password(length=32, no_ambiguous=True)
+        assert all(c not in "l1IO0" for c in pwd)

@@ -42,6 +42,12 @@ def generate_password(length=16, use_symbols=True, no_ambiguous=False):
     pool = build_pool(use_symbols, no_ambiguous)
     categories = [LOWER, UPPER, DIGITS] + ([SYMBOLS] if use_symbols else [])
 
+    if no_ambiguous:
+        categories = [
+            "".join(c for c in category if c not in AMBIGUOUS)
+            for category in categories
+        ]
+
     # Guarantee at least one character from each category
     chars = [secrets.choice(c) for c in categories]
 
