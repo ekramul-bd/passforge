@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "passforge"
+version = "1.0.0"
+description = "A secure password generator and strength checker CLI"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Ekramul Islam" }]
+
+[project.scripts]
+passforge = "passforge:main"
+
+[tool.setuptools]
+py-modules = ["passforge"]
