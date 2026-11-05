@@ -1,78 +1,140 @@
 # PassForge 🔐
 
-A simple, secure command-line tool to **generate strong passwords** and **check password strength** — built with Python's standard library only. No dependencies, no tracking, everything runs locally on your machine.
+**PassForge** is a simple, secure, and lightweight command-line tool built with Python to generate strong passwords and check password strength.
 
-## Why PassForge?
+It uses Python's standard library only. No external dependencies, no tracking — everything runs locally on your machine.
 
-Weak passwords are one of the biggest causes of hacked accounts. PassForge helps you create random, strong passwords and tells you how strong (or weak) your existing ones are — useful for everyone, not just developers.
+## ✨ Features
 
-## Features
+- 🔑 Generate strong random passwords with customizable length and character types.
+- 📊 Check password strength (Weak / Fair / Strong / Very Strong).
+- 🚫 Exclude ambiguous characters such as `l`, `1`, `I`, `O`, and `0` for easier typing.
+- 🔒 Uses Python's `secrets` module for cryptographically secure randomness.
+- 📁 Simple single-file design using `passforge.py`.
+- 🧪 Includes automated tests with pytest.
 
-- 🔑 Generate strong random passwords (customizable length & character types)
-- 📊 Check the strength of any password (Weak / Fair / Strong / Very Strong)
-- 🚫 Exclude ambiguous characters (like `l`, `1`, `O`, `0`) for easy typing
-- 🔒 Uses Python's `secrets` module — cryptographically secure randomness
-- 📁 Single-file design — the whole tool is one `passforge.py` file
-- 🧪 Fully tested
+## 🚀 Installation
 
-## Installation
+Clone the repository:
 
 ```bash
 git clone https://github.com/ekramul-bd/passforge.git
 cd passforge
+```
+
+Install the project:
+
+```bash
 pip install -e .
 ```
 
-## Usage
+## 💻 Usage
 
-Generate a password (default: 16 characters):
+### 🔑 Generate a Password
+
+Generate a password with the default length of 16 characters:
 
 ```bash
 passforge generate
-passforge generate --length 24
-passforge generate --no-symbols     # letters and digits only
-passforge generate --no-ambiguous   # avoids confusing characters
 ```
 
-Check a password's strength:
+Generate a 24-character password:
+
+```bash
+passforge generate --length 24
+```
+
+Generate a password without symbols:
+
+```bash
+passforge generate --no-symbols
+```
+
+Avoid ambiguous characters:
+
+```bash
+passforge generate --no-ambiguous
+```
+
+### 📊 Check Password Strength
+
+Check the strength of a password:
 
 ```bash
 passforge check "myP@ssw0rd123"
-# Output: Strength: STRONG (score 75/100)
 ```
 
-Or run it directly without installing:
+Example output:
+
+```text
+Strength: STRONG (score 75/100)
+```
+
+### ▶️ Run Without Installing
+
+You can also run PassForge directly using Python:
 
 ```bash
 python passforge.py generate
 python passforge.py check "myP@ssw0rd123"
 ```
 
-## How the strength score works
+## 📈 How Password Strength Is Scored
 
-Passwords are scored out of 100 based on:
+PassForge evaluates passwords using a scoring system out of 100 points.
 
 | Factor | Points |
-|---|---|
-| Length (8+ / 12+ / 16+ / 20+ chars) | up to 40 |
-| Lowercase + uppercase letters | 20 |
+|---|---:|
+| Length (8+, 12+, 16+, 20+ characters) | Up to 40 |
+| Lowercase and uppercase letters | 20 |
 | Digits | 15 |
 | Symbols | 15 |
-| Bonus for length 20+ | 10 |
+| Length bonus (20+ characters) | 10 |
 
-- **0–40: Weak** — don't use this anywhere
-- **41–60: Fair** — okay for throwaway accounts
-- **61–80: Strong** — good for most accounts
-- **81–100: Very Strong** — ideal for important accounts
+### Strength Levels
 
-## Running tests
+| Score | Strength |
+|---|---|
+| 0–40 | Weak |
+| 41–60 | Fair |
+| 61–80 | Strong |
+| 81–100 | Very Strong |
+
+## 🧪 Running Tests
+
+PassForge includes automated tests to verify its functionality.
+
+Run the test suite using:
 
 ```bash
 python -m pytest test_passforge.py -v
 ```
 
-## License
+## 📂 Project Structure
 
-MIT License — see [LICENSE](LICENSE). Copyright (c) 2026 Ekramul Islam.
+```text
+passforge/
+│
+├── passforge.py
+├── test_passforge.py
+├── pyproject.toml
+├── README.md
+├── LICENSE
+└── .gitignore
+```
 
-Made with ❤️ by [ekramul-bd](https://github.com/ekramul-bd).
+## 📄 License
+
+**MIT License**
+
+Copyright © 2026 **Ekramul Islam (ekramul-bd)**.
+
+PassForge is open-source software licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software, subject to the terms and conditions of the MIT License.
+
+The software is provided "AS IS", without warranty of any kind, express or implied.
+
+For the complete license terms, please see the [LICENSE](LICENSE) file.
+
+---
+
+**Made with ❤️ by [ekramul-bd](https://github.com/ekramul-bd)**
